@@ -1,0 +1,28 @@
+/* Produtos */
+
+.fa-cart-plus {
+padding: 5px 15px;
+border-radius: 1rem;
+margin-left: -12px;
+}
+
+
+.imagem-card {
+    max-width: 100%;
+    max-height: 80%;
+    display: flex;
+    object-fit: cover;
+    justify-content: center;
+    align-items: center;   
+}
+
+.produto-card {
+    width: 300px;
+    height: 100%;
+    margin-top: 8%;
+    margin-bottom: 10%;
+}
+
+.card-body {
+height: 105px;
+}

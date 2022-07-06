@@ -1,0 +1,80 @@
+
+<div class="container-fluid bg m-0 pb-2 pt-2">
+  <div class="container md-12">
+      <div class="d-flex align-items-center justify-content-between p-0">  
+           
+          <div class="form-group">
+            <div>
+              <p>Categorias</p>
+            </div>
+            <select class="form-control" name="categoria" id="categoria" (change)="categoriaProd($event)">
+            <option value="ALL" disabled selected>Selecione uma categoria</option>
+            <option value="ALL">Todos</option>
+            <option value="ACAO">Ação</option>
+            <option value="AVENTURA">Aventura</option>
+            <option value="BATTLEROYALE">Battle Royale</option>
+            <option value="CORRIDA">Corrida</option>
+            <option value="ESPORTE">Esporte</option>
+            <option value="TERROR">Terror</option>
+            </select>
+          </div>
+          
+      </div>  
+  
+  </div>
+  <div class="container-fluid">
+
+      <div class="container-md">
+          <div class="row d-flex justify-content-around" style="height: 100%;">
+            <ng-container  *ngFor='let produtos of listaProdutos'>
+              <div class="produto-card my-2" *ngIf='key == produtos.categorias'>
+
+                <div class="card rounded" >
+                  <a >
+                    <img src='{{ "../../../../../../assets/jogos/"+produtos.imagem }}' class="card-img-top imagem-card">
+                  </a>
+                  <div class="card-body bg-card p-2">
+                    <p class="card-text" style="text-align: center; color:#010127;"> <b>{{produtos.nomeProduto}}</b> </p>
+                    <p class="card-title elipse my-1" style="color:#f76201; font-size: 10pt;"> <small>  {{'Disponíveis:'+ produtos.estoque}}</small></p>
+                    <p class="card-text font-weight-bold mt-1">{{produtos.valorProduto | currency :'BRL'}}</p>
+                  </div> 
+                  <div class="bnt-group d-flex">
+                    <div *ngIf="!authservice.logado()">
+                        <a class="btn btn-carinho border border-white align-items-center" style="background: #010127; color: white; border: 0; width: 100%; margin: 0; padding: 2;"  [routerLink]="['/produtos-lista', produtos.idProduto]">Detalhes do Produto<i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+                    </div>
+                    <div *ngIf="authservice.logado()">
+                        <a class="btn btn-carinho border border-white align-items-center" style="background: #010127; color: white; border: 0; width: 100%; margin: 0; padding: 2;" [routerLink]="['/produtos-lista', produtos.idProduto]">Detalhes do Produto<i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+                    </div>
+                  </div>               
+
+                </div>
+              </div>
+
+              <div class="produto-card my-2" *ngIf='key == "ALL"'>
+                <!--   -->
+                <div class="card rounded" >
+                  <a>
+                    <img src='{{ "../../../../../../assets/jogos/"+produtos.imagem }}'  class="card-img-top imagem-card">
+                  </a>
+                  <div class="card-body bg-card p-2">
+                    <p class="card-text" style="text-align: center; color:#010127;"> <b>{{produtos.nomeProduto}}</b> </p>
+                    <p class="card-title elipse my-1" style="color:#f76201; font-size: 10pt;"> <small>  {{'Disponíveis:'+ produtos.estoque}}</small></p>
+                    <p class="card-text font-weight-bold mt-1" style="color:#010127;" ><b>{{produtos.valorProduto | currency :'BRL'}}</b></p>
+                  </div>
+                  <div class="bnt-group d-flex justify-content-center">
+                    <div *ngIf="!authservice.logado()">
+                        <a class="btn btn-carinho border border-white align-items-center" style="background: #010127; color: white; border: 0; width: 100%; margin: 0; padding: 2;"  [routerLink]="['/produtos-lista', produtos.idProduto]">Detalhes do Produto<i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+                    </div>
+                    <div *ngIf="authservice.logado()">
+                        <a class="btn btn-carinho border border-white align-items-center" style="background: #010127; color: white; border: 0; width: 100%; margin: 0; padding: 2;" [routerLink]="['/produtos-lista', produtos.idProduto]">Detalhes do Produto<i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+                </div>
+              </div>
+            </ng-container>
+          </div>
+    </div>
+  </div>
+
+  
+</div>

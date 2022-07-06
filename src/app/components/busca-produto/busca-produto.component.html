@@ -1,0 +1,30 @@
+<app-header></app-header>
+
+<div class="row mt-5">
+  <div class="col-md-12">
+    <h3 class="text-center text-secondary">Resultados para "{{nomeProcurado}}"</h3>
+  </div>
+</div>
+<hr>
+
+
+<section class="produto ml-5 mr-5">
+  <div class="row">
+    <div class="col-lg-3 text-center" *ngFor="let item of produtos">
+      <div class="card border-0 bg-light mb-2">
+        <a [routerLink]="['/produtos-lista', item.idProduto]" class="btn p-0">
+          <div class="card-body">
+            <a routerlink="/todos-produtos"><img class="img-card img-fluid rounded" src='{{ "../../../../../assets/jogos/"+item.imagem}}' alt="not found"></a>
+          </div>
+
+          <div class="card-footer">
+            <h6>{{item.nomeProduto}}</h6>
+            <p class="textPrice">{{item.valorProduto | currency : 'BRL'}}</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<app-footer></app-footer>

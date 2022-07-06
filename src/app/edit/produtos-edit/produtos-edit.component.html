@@ -1,0 +1,113 @@
+<app-header></app-header>
+<div class="container-fluid p-0 d-flex  align-items-center">
+    <div class="container">
+      <div class="row d-flex justify-content-center">
+  
+        <form class="form-signin rounded-sm vw-100">
+          <div class="col-md-12 mt-3 mb-5">
+          <div class="row d-flex justify-content-center">
+              <div class="col-md-10">
+              <h2 class="text-center">Atualizar Produto</h2>
+  
+              <div class="form-group">
+                  <label for="produto">Produto</label>
+                  <input
+                  [(ngModel)]="produtos.nomeProduto"
+                  class="form-control"
+                  type="text"
+                  name="produto"
+                  id="produto"
+                  placeholder="Nome do produto"
+                  />
+              </div>
+  
+              <div class="form-group">
+                  <label for="descricao">Descrição</label>
+                  <textarea
+                  [(ngModel)]="produtos.descricaoProduto"
+                  class="form-control"
+                  name="descricao"
+                  id="descricao"
+                  placeholder="Descrição do produto"
+                  cols="30"
+                  rows="10"
+                  ></textarea>
+              </div>
+  
+              <div class="form-group">
+                  <label for="valor">Valor</label>
+                  <input
+                  [(ngModel)]="produtos.valorProduto"
+                  class="form-control"
+                  type="text"
+                  name="valor"
+                  id="valor"
+                  placeholder="Digite o valor do produto"
+                  />
+              </div>
+              <div class="form-group">
+                  <label for="valor">Estoque</label>
+                  <input
+                  [(ngModel)]="produtos.estoque"
+                  class="form-control"
+                  type="text"
+                  name="estoque"
+                  id="estoque"
+                  placeholder="Digite a quantidade em estoque"
+                  />
+              </div>
+  
+              <div class="form-group">
+                  <label for="categoria">Categoria</label>
+                  <select class="form-control" name="categoria" id="categoria" (change)="categoriaProd($event)">
+                    <option value="ALL">Todos</option>
+                    <option value="ACAO">Ação</option>
+                    <option value="AVENTURA">Aventura</option>
+                    <option value="BATTLEROYALE">Battle Royale</option>
+                    <option value="CORRIDA">Corrida</option>
+                    <option value="ESPORTE">Esporte</option>
+                    <option value="TERROR">Terror</option>
+                  </select>
+              </div>  
+              
+  
+  
+              <div class="form-group">
+                  <label for="imagem">Imagem do Produto</label>
+                  <input
+                  [(ngModel)]="produtos.imagem"
+                  class="form-control"
+                  type="text"
+                  name="imagem"
+                  id="imagem"
+                  placeholder="{{produtos.imagem}}"
+                  />
+              </div>
+  
+              <div class="d-flex justify-content-center py-3">                  
+                  <button
+                  type="submit"
+                  class="btn btn-success w-25"
+                  (click)="atualizar()"
+                  style="background: #e63909; margin-left: 20px; margin-top: 20px; border:0"
+                  >
+                  Atualizar
+                  </button>
+
+                  <button
+                  type="submit"
+                  class="btn btn-success w-25"
+                  routerLink="/jogos-cadastro"
+                  style="background: #010127; margin-top: 20px; 
+                  border: 0; color: white;"
+                  >
+                  Cancelar
+                  </button>
+              </div>
+              </div>
+          </div>
+          </div>
+      </form></div>
+  </div>
+</div>
+<app-footer></app-footer>

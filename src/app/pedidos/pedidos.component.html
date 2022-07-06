@@ -1,0 +1,51 @@
+<app-header></app-header>
+<div class="container mt-5">
+
+  <div class="row">
+
+    <div class="col-md-8">
+      <div class="card">
+        <h5 class="card-header  text-center"  style="background: #010127;">Carrinho</h5>
+
+        <div class="card-body d-flex align-items-center" *ngFor="let item of listaProdutos">
+          <div class="row align-items-center">
+
+            <div class="col-md-3 mr-5">
+              <img class="img-fluid tm-max" src="{{'../../../../assets/jogos/'+ item.imagem}}"
+              alt="Imagem do produto">
+            </div>
+
+            <div class="col-md-5 mr-5">
+              <h6 class="text-secondary mr-5">{{item.nomeProduto}}</h6>
+            </div>
+
+            <div class="col md-3 d-flex justify-content-end">
+              <h6 class="justify-content-end mr-2">{{item.valorProduto | currency : 'BRL'}}</h6>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+
+      <div class="card">
+        <h5 class="card-header text-center"  style="background: #010127;">Resumo do pedido</h5>
+
+        <div class="card-body">
+          <h5 class="text-center">Total: {{soma | currency : 'BRL'}}</h5>
+          <hr>
+        </div>
+
+        <div class="d-flex justify-content-center mb-2">
+          <button (click)="finalizarCompra()" type="button" class="btn btn-primary" style="background: #010127; border: 0;">Finalizar Compra</button>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+<app-footer></app-footer>

@@ -1,0 +1,177 @@
+<!-- <app-header-usuario></app-header-usuario> -->
+<app-header></app-header>
+<div class="container-fluid p-0 d-flex align-items-center">
+    <div class="container">
+      <div class="row d-flex justify-content-center">
+  
+        <form class="form-signin rounded-sm vw-100">
+          <div class="col-md-12 mt-3 mb-5">
+          <div class="row d-flex justify-content-center">
+              <div class="col-md-10">
+              <h2 class="text-center">Cadastrar Produto</h2>
+  
+              <div class="form-group">
+                  <label for="produto">Produto</label>
+                  <input
+                  [(ngModel)]="produtos.nomeProduto"
+                  class="form-control"
+                  type="text"
+                  name="produto"
+                  id="produto"
+                  placeholder="Nome do produto"
+                  />
+              </div>
+  
+              <div class="form-group">
+                  <label for="descricao">Descrição</label>
+                  <textarea
+                  [(ngModel)]="produtos.descricaoProduto"
+                  class="form-control"
+                  name="descricao"
+                  id="descricao"
+                  placeholder="Descrição do produto"
+                  cols="30"
+                  rows="10"
+                  ></textarea>
+              </div>
+  
+              <div class="form-group">
+                  <label for="valor">Valor</label>
+                  <input
+                  [(ngModel)]="produtos.valorProduto"
+                  class="form-control"
+                  type="text"
+                  name="valor"
+                  id="valor"
+                  placeholder="Digite o valor do seu produto"
+                  />
+              </div>
+              <div class="form-group">
+                  <label for="valor">Estoque</label>
+                  <input
+                  [(ngModel)]="produtos.estoque"
+                  class="form-control"
+                  type="text"
+                  name="estoque"
+                  id="estoque"
+                  placeholder="Digite a quantidade em estoque"
+                />
+              </div>
+  
+              <div class="form-group">
+                  <label for="categoria">Categoria</label>
+                  <select class="form-control" name="categoria" id="categoria" (change)="categoriaProd($event)">
+                    <option value="ALL">Todos</option>
+                    <option value="ACAO">Ação</option>
+                    <option value="AVENTURA">Aventura</option>
+                    <option value="BATTLEROYALE">Battle Royale</option>
+                    <option value="CORRIDA">Corrida</option>
+                    <option value="ESPORTE">Esporte</option>
+                    <option value="TERROR">Terror</option>
+                  </select>
+              </div>  
+              
+  
+  
+              <div class="form-group">
+                  <label for="imagem">Imagem do Produto</label>
+                  <input
+                  [(ngModel)]="produtos.imagem"
+                  class="form-control"
+                  type="text"
+                  name="imagem"
+                  id="imagem"
+                  placeholder="{{produtos.imagem}}"
+                  />
+              </div>
+  
+              <div class="d-flex justify-content-center py-3">                  
+                  <button
+                  type="submit"
+                  class="btn btn-success w-25"
+                  (click)="cadastrarProduto()"
+                  style="background: #010127; margin-top: 20px; 
+                  border: 0;"
+                  >
+                  Cadastrar
+                  </button>
+                  <button
+                  type="reset"
+                  class="btn btn-reset w-25" 
+                  style="background: #e63909; color: white; margin-left: 20px; 
+                  margin-top: 20px; border: 0"                 
+                  >
+                  Limpar preenchimento
+                  </button>
+              </div>
+              </div>
+          </div>
+          </div>
+      </form></div>
+  </div>
+</div>
+<hr>
+
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-md-12">
+      <h2 class="text-center">Produtos Cadastrados</h2>
+    </div>
+  </div>
+
+
+  <div class="row mt-3 mb-5 d-flex justify-content-center">
+    <div class="col-md-6">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Nome Produto</th>
+            <th scope="col">Categoria</th>
+            <th scope="col">Estoque</th>
+            <th scope="col">Valor</th>
+            <th scope="col" class="text-right">Editar</th>
+
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let produto of listaProdutos">
+            <th>{{produto.idProduto}}</th>
+            <td>{{produto.nomeProduto}}</td>
+            <td>{{produto.categorias}}</td>
+            <td>{{produto.estoque}}</td>
+            <td>{{produto.valorProduto}}</td>
+            <td class="d-flex  justify-content-end">
+              <a [routerLink]="['/produtos-edit', produto.idProduto]" routerLinkActive="active"><i class="fa  fa-pencil-square  text-dark" aria-hidden="true"><img style="width: 25px; margin-right: 4px;" src="../../assets/Images/editar.png" alt=""></i></a>
+              <a (click)="pegarId(produto.idProduto)" class="mx-2" href="" data-bs-toggle="modal" data-bs-target="#deletarProduto">
+                <img style="width: 25px;" src="../../assets/Images/deletar.png" alt="ícone Deletar">
+              </a>
+            </td>
+          </tr>
+          <div class="modal fade" id="deletarProduto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h3 class="modal-title" id="exampleModalLabel">Deletar Produto</h3>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <p>Tem certeza que deseja deletar este produto?</p>
+                </div>
+                <div class="modal-footer">
+                  <button style="background: #010127;" type="reset" class="btn text-white" data-bs-dismiss="modal">Cancelar</button>
+                  <button style="background:#e63909; " type="submit" class="btn text-white" (click)="delete() " data-bs-dismiss="modal">Deletar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+
+<app-footer></app-footer>

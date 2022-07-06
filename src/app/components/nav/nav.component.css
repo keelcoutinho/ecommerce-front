@@ -1,0 +1,13 @@
+.nav{
+    background: #221E25;
+    width: 100%;
+    
+}
+.btn{
+    background: #221E25;
+    border: 0;
+}
+
+.form-inline{
+   margin-left: 10px;
+}

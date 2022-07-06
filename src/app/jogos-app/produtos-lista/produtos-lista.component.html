@@ -1,0 +1,63 @@
+<app-header></app-header>
+<div class="container-fluid">
+    <div class="text-center mb-5 text-center" ></div>
+    <div class="row d-flex align-items-center" >
+  
+      <div class="col-md-6">
+  
+        <div class="row d-flex justify-content-center ">
+          <div class="col-md-6">
+  
+           
+            <div class="detalhes justify-content-center">
+                <img style="width: 60%;" src="{{'../../../../../assets/jogos/'+produtos.imagem}}">
+            </div>
+  
+            <div class="detalhes">
+             <h3><b>{{produtos.nomeProduto}}</b></h3>
+            </div>
+  
+            <div class="detalhes">
+              <p  class="text-justify">{{produtos.descricaoProduto}}</p>
+            </div>
+            
+            <div class="detalhes">
+              <p><b>{{produtos.valorProduto | currency:'BRL'}}</b></p>
+            </div>
+          
+  
+          </div>
+        </div>
+  
+      </div>
+  
+      <div class="col-md-6" id="img-bg">
+        <div class="detalhes">
+            <div class="container-fluid d-flex align-items-center justify-content-center"style="width: 80%;">
+                <h5 class="text-center" style="font-size: 20pt;"><b>Recebimento imediado do produto!</b>
+                  <p style="font-size: 15pt;">Formas de pagamento <b>Cartão</b> ou <b>Pix</b> </p></h5>
+                
+            </div>
+           
+        </div>
+
+        <div class="detalhes">
+            <div class="col-md-12 d-flex justify-content-center mb-3"
+            *ngIf="!authservice.logado()" >
+              <button class=" btn btn-warning w-75 my-2" style="background: #e63909; color: white; border: #e63909; margin-top: -10px;" routerLink="/login">
+                Adicionar ao carrinho <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+              </button>
+            </div>
+            <div class="col-md-12 d-flex justify-content-center mb-3"
+            *ngIf="authservice.logado()">
+              <button class=" btn btn-warning w-75 my-2 " style="background: #e63909;  color: white;" (click)="adicionarAoCarrinho(produtos.idProduto)">
+                Adicionar ao carrinho <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+              </button>
+            
+        </div>
+        
+      </div>
+  
+    </div>  
+</div>
+<app-footer></app-footer>
