@@ -73,4 +73,11 @@ export class PedidosComponent implements OnInit {
       
       }
   }
+
+  cancelar(){
+    this.router.navigate(['/pedidos'])
+    this.listaProdutos = []
+    environment.carrinho = [0]
+    this.soma= 0
+  }
 }
