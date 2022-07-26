@@ -28,6 +28,7 @@ import { BuscaProdutoComponent } from './components/busca-produto/busca-produto.
 import { UsuarioEditComponent } from './edit/usuario-edit/usuario-edit.component';
 import { ProdutosEditComponent } from './edit/produtos-edit/produtos-edit.component';
 import { TemplateComponent } from './components/template/template.component';
+import { AdmComponent } from './adm/adm.component';
 
 
 
@@ -56,6 +57,7 @@ import { TemplateComponent } from './components/template/template.component';
     UsuarioEditComponent,
     ProdutosEditComponent,
     TemplateComponent,
+    AdmComponent,
     
   ],
   imports: [
