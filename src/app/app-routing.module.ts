@@ -14,6 +14,7 @@ import { ProdutosListaComponent } from './jogos-app/produtos-lista/produtos-list
 import { LoginComponent } from './login/login.component';
 import { PedidosComponent } from './pedidos/pedidos.component';
 import { ProdutosComponent } from './produtos/produtos.component';
+import { UsuariosComponent } from './usuarios/usuarios.component';
 
 const routes: Routes = [
   {path: '', redirectTo:'home', pathMatch:'full'},
@@ -31,7 +32,8 @@ const routes: Routes = [
   {path: 'produtos-edit/:id', component: ProdutosEditComponent},
   //{path: 'produtos', component: ProdutosComponent},
   {path: 'template', component: TemplateComponent},
-  {path: 'adm', component: AdmComponent}
+  {path: 'adm', component: AdmComponent},
+  {path: 'usuarios', component: UsuariosComponent}
 ];
 
 @NgModule({

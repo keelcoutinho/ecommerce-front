@@ -29,6 +29,7 @@ import { UsuarioEditComponent } from './edit/usuario-edit/usuario-edit.component
 import { ProdutosEditComponent } from './edit/produtos-edit/produtos-edit.component';
 import { TemplateComponent } from './components/template/template.component';
 import { AdmComponent } from './adm/adm.component';
+import { UsuariosComponent } from './usuarios/usuarios.component';
 
 
 
@@ -58,6 +59,7 @@ import { AdmComponent } from './adm/adm.component';
     ProdutosEditComponent,
     TemplateComponent,
     AdmComponent,
+    UsuariosComponent,
     
   ],
   imports: [

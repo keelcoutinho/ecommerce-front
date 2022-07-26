@@ -8,7 +8,7 @@
           <div class="col-md-12 mt-3 mb-5">
           <div class="row d-flex justify-content-center">
               <div class="col-md-10">
-              <h2 class="text-center">Cadastrar Produto</h2>
+              <h2 class="text-center  h2-mobile">Cadastrar Produto</h2>
   
               <div class="form-group">
                   <label for="produto">Produto</label>
@@ -101,7 +101,7 @@
                   style="background: #e63909; color: white; margin-left: 20px; 
                   margin-top: 20px; border: 0"                 
                   >
-                  Limpar preenchimento
+                  Cancelar
                   </button>
               </div>
               </div>
@@ -115,7 +115,7 @@
 <div class="container">
   <div class="row mt-5">
     <div class="col-md-12">
-      <h2 class="text-center">Produtos Cadastrados</h2>
+      <h2 class="text-center  h2-mobile">Produtos Cadastrados</h2>
     </div>
   </div>
 
@@ -143,35 +143,35 @@
             <td>{{produto.estoque}}</td>
             <td>{{produto.valorProduto}}</td>
             <td class="d-flex  justify-content-end">
-              <a [routerLink]="['/produtos-edit', produto.idProduto]" routerLinkActive="active"><i class="fa  fa-pencil-square  text-dark" aria-hidden="true"><img style="width: 25px; margin-right: 4px;" src="../../assets/Images/editar.png" alt=""></i></a>
+              <a [routerLink]="['/produtos-edit', produto.idProduto]" routerLinkActive="active"><i class="fa  fa-pencil-square  text-dark" aria-hidden="true"><img style="margin-right: 4px;" class="imgIcon" src="../../assets/Images/editar.png" alt=""></i></a>
               <a (click)="pegarId(produto.idProduto)" class="mx-2" href="" data-bs-toggle="modal" data-bs-target="#deletarProduto">
-                <img style="width: 25px;" src="../../assets/Images/deletar.png" alt="ícone Deletar">
+                <img class="imgIcon" src="../../assets/Images/deletar.png" alt="ícone Deletar">
               </a>
             </td>
-          </tr>
-          <div class="modal fade" id="deletarProduto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h3 class="modal-title" id="exampleModalLabel">Deletar Produto</h3>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                  <p>Tem certeza que deseja deletar este produto?</p>
-                </div>
-                <div class="modal-footer">
-                  <button style="background: #010127;" type="reset" class="btn text-white" data-bs-dismiss="modal">Cancelar</button>
-                  <button style="background:#e63909; " type="submit" class="btn text-white" (click)="delete() " data-bs-dismiss="modal">Deletar</button>
-                </div>
-              </div>
-            </div>
-          </div>
+          </tr>          
         </tbody>
       </table>
     </div>
   </div>
 </div>
 
-
+<!-- MODAL -->
+<div class="modal fade" id="deletarProduto" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="exampleModalLabel">Deletar Produto</h3>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Tem certeza que deseja deletar este produto?</p>
+      </div>
+      <div class="modal-footer">
+        <button style="background: #010127;" type="reset" class="btn text-white" data-bs-dismiss="modal">Cancelar</button>
+        <button style="background:#e63909; " type="submit" class="btn text-white" (click)="delete() " data-bs-dismiss="modal">Deletar</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <app-footer></app-footer>
