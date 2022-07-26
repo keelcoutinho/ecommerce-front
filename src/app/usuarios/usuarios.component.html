@@ -1,0 +1,150 @@
+<app-header></app-header>
+<div class="container-fluid p-0 d-flex align-items-center">
+    <div class="container">
+      <div class="row d-flex justify-content-center">
+  
+        <form class="form-signin rounded-sm vw-100">
+          <div class="col-md-12 mt-3 mb-5">
+          <div class="row d-flex justify-content-center">
+              <div class="col-md-10">
+              <h2 class="text-center  h2-mobile">Cadastrar Usuário</h2>
+  
+              <div class="form-group">
+                  <label for="nome">Nome</label>
+                  <input
+                  [(ngModel)]="usuarios.nome"
+                  class="form-control"
+                  type="text"
+                  name="nome"
+                  id="nome"
+                  placeholder="Nome do usuário"
+                  />
+              </div>
+    
+              <div class="form-group">
+                  <label for="valor">CPF</label>
+                  <input
+                  [(ngModel)]="usuarios.cpfUsuario"
+                  class="form-control"
+                  type="text"
+                  name="cpf"
+                  id="cpf"
+                  placeholder="Digite o CPF"
+                  />
+              </div>
+              <div class="form-group">
+                  <label for="email">E-mail</label>
+                  <input
+                  [(ngModel)]="usuarios.usuario"
+                  class="form-control"
+                  type="email"
+                  name="email"
+                  id="email"
+                  placeholder="Digite o e-mail"
+                />
+              </div>
+              <div class="form-group">
+                <label for="senha">Senha</label>
+                <input
+                [(ngModel)]="usuarios.senha"
+                class="form-control"
+                type="password"
+                name="senha"
+                id="senha"
+                placeholder="Digite a senha"
+              />
+            </div>
+                
+  
+  
+             
+  
+            <div class="d-flex justify-content-center py-3">                  
+                  <button
+                  type="submit"
+                  class="btn btn-success w-25"
+                  (click)="cadastrarUsuario()"
+                  style="background: #010127; margin-top: 20px; 
+                  border: 0;"
+                  >
+                  Cadastrar
+                  </button>
+                  <button
+                  type="reset"
+                  class="btn btn-reset w-25" 
+                  style="background: #e63909; color: white; margin-left: 20px; 
+                  margin-top: 20px; border: 0"                 
+                  >
+                  Cancelar
+                  </button>
+              </div>
+              </div>
+          </div>
+          </div>
+      </form></div>
+  </div>
+</div>
+<hr>
+
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-md-12">
+      <h2 class="text-center h2-mobile">Usuários Cadastrados</h2>
+    </div>
+  </div>
+
+
+  <div class="row mt-3 mb-5 d-flex justify-content-center" style="width: 100%;">
+    <div class="col-md-6">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Nome Usuário</th>
+            <th scope="col">E-mail</th>
+            <th scope="col">CPF</th>
+            <th scope="col" class="text-right">Editar</th>
+
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let usuarios of listaUsuarios">
+            <th>{{usuarios.idUsuario}}</th>
+            <td>{{usuarios.nome}}</td>
+            <td>{{usuarios.usuario}}</td>
+            <td>{{usuarios.cpfUsuario}}</td>
+            <td class="d-flex  justify-content-end">
+              <a [routerLink]="['/usuarios', usuarios.idUsuario]" routerLinkActive="active"><i class="fa  fa-pencil-square  text-dark" aria-hidden="true"><img style="margin-right: 4px;"  class="imgIcon" src="../../assets/Images/editar.png" alt=""></i></a>
+              <a (click)="pegarId(usuarios.idUsuario)" class="mx-2" href="" data-bs-toggle="modal" data-bs-target="#deletarUsuario">
+                <img class="imgIcon" src="../../assets/Images/deletar.png" alt="ícone Deletar">
+              </a>
+            </td>
+          </tr>
+          
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL -->
+<div class="modal fade" id="deletarUsuario" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title" id="exampleModalLabel">Deletar Usuário</h3>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Tem certeza que deseja deletar este usuário?</p>
+        </div>
+        <div class="modal-footer">
+          <button style="background: #010127;" type="reset" class="btn text-white" data-bs-dismiss="modal">Cancelar</button>
+          <button style="background:#e63909; " type="submit" class="btn text-white" (click)="delete() " data-bs-dismiss="modal">Deletar</button>
+        </div>
+      </div>
+    </div>
+</div>
+
+<app-footer></app-footer>

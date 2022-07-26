@@ -134,6 +134,9 @@ footer{
     height: 40px;
 }
 
+.imgIcon{
+  width: 25px;
+}
 
 /*Mobile*/
 
@@ -149,6 +152,20 @@ footer{
     }
     .card-group{
      justify-content: space-around;
+    }
+    table{
+      max-width: 400px;
+      font-size: 7pt;
+      align-items: center;
+      margin: 0;
+      justify-content: center;
+      margin-left: 10px;
+    }
+    .imgIcon{
+      width: 15px;
+    }
+    .h2-mobile{
+      margin-left: 5px;
     }
 }
 /*Equipe*/
@@ -252,5 +269,7 @@ footer{
   transform: scale(1.2);
 }
 
+
+/* Controle Clientes */
 
 

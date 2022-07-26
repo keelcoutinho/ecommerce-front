@@ -73,12 +73,15 @@ export class ProdutosComponent implements OnInit {
         title: 'Produto deletado com sucesso!',
         icon: 'success'
     })
+    this.findAllProdutos();
+    this.router.navigate(["/jogos-cadastro"])
     },
       error:(error)=>{
         this.erro = error;
         console.log(this.erro)
       }
     })
+    
   }
 
   pegarId(id: number){

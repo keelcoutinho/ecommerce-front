@@ -20,9 +20,13 @@ export class AuthService {
     headers: new HttpHeaders().set("Authorization", environment.token),
   };
  
+  getAllUsuarios():Observable<User[]>{
+    return this.http.get<User[]>('https://ecommerce-aw.herokuapp.com/usuarios/all')
+
+  }
 
   buscarTodos(): Observable<UserLogin[]>{
-    return this.http.get<UserLogin[]>(this.userUrl)
+    return this.http.get<UserLogin[]>(`${this.userUrl}/all`)
   }
  
   login(userLogin: UserLogin): Observable<UserLogin> {
@@ -43,6 +47,8 @@ export class AuthService {
   getByIdUsuario(id: number): Observable<User>{
     return this.http.get<User>(`https://ecommerce-aw.herokuapp.com/usuarios/${id}`, this.token)
   }
+
+
   
   deletarUsuario(id: number): Observable<User>{
     return this.http.delete<User>(`https://ecommerce-aw.herokuapp.com/usuarios/${id}`, this.token)
