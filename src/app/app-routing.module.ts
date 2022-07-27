@@ -25,12 +25,11 @@ const routes: Routes = [
   {path: 'jogos-cadastro', component: ProdutosComponent },
   {path: 'jogos-app', component: JogosAppComponent},
   {path: 'blog', component: BlogComponent},
-  {path: 'pedidos', component: PedidosComponent}, //adicionado rota pedidos
+  {path: 'pedidos', component: PedidosComponent}, 
   {path: 'produtos-lista/:id', component: ProdutosListaComponent},
   {path: 'busca-produto/:nome', component: BuscaProdutoComponent},
   {path: 'usuario-edit/:id', component: UsuarioEditComponent},
   {path: 'produtos-edit/:id', component: ProdutosEditComponent},
-  //{path: 'produtos', component: ProdutosComponent},
   {path: 'template', component: TemplateComponent},
   {path: 'adm', component: AdmComponent},
   {path: 'usuarios', component: UsuariosComponent}
