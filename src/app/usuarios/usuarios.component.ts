@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { first } from 'rxjs';
 import { environment } from 'src/environments/environment.prod';
@@ -13,6 +14,8 @@ import { AuthService } from '../service/auth.service';
   styleUrls: ['./usuarios.component.css']
 })
 export class UsuariosComponent implements OnInit {
+  formulario: FormGroup;
+  
   usuarios: User = new User();
   listaUsuarios: User[];
   
@@ -22,11 +25,18 @@ export class UsuariosComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private formBuilder: FormBuilder
   ) { }
 
 
   ngOnInit() {
+    this.formulario = this.formBuilder.group({
+      nome: ['',[Validators.required]],
+      usuario: ['',[Validators.required]],
+      cpfUsuario:['',[Validators.required]],      
+      senha: ['',[Validators.required]]
+    });
     if (environment.token == '') {
 
       Swal.fire({

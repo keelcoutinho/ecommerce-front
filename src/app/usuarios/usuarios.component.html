@@ -6,12 +6,12 @@
         <form class="form-signin rounded-sm vw-100">
           <div class="col-md-12 mt-3 mb-5">
           <div class="row d-flex justify-content-center">
-              <div class="col-md-10">
+              <div class="col-md-10" [formGroup]="formulario">
               <h2 class="text-center  h2-mobile">Cadastrar Usuário</h2>
   
               <div class="form-group">
                   <label for="nome">Nome</label>
-                  <input
+                  <input formControlName="nome"
                   [(ngModel)]="usuarios.nome"
                   class="form-control"
                   type="text"
@@ -20,10 +20,13 @@
                   placeholder="Nome do usuário"
                   />
               </div>
+              <div *ngIf="formulario.get('nome')?.errors?.['required'] && formulario.get('nome')?.touched">
+                <p class="validaForm">O campo nome é obrigatório.</p>
+              </div>
     
               <div class="form-group">
                   <label for="valor">CPF</label>
-                  <input
+                  <input formControlName="cpfUsuario"
                   [(ngModel)]="usuarios.cpfUsuario"
                   class="form-control"
                   type="text"
@@ -32,9 +35,12 @@
                   placeholder="Digite o CPF"
                   />
               </div>
+              <div *ngIf="formulario.get('cpfUsuario')?.errors?.['required'] && formulario.get('cpfUsuario')?.touched">
+                <p class="validaForm">O campo cpf é obrigatório.</p>
+              </div>
               <div class="form-group">
                   <label for="email">E-mail</label>
-                  <input
+                  <input formControlName="usuario"
                   [(ngModel)]="usuarios.usuario"
                   class="form-control"
                   type="email"
@@ -43,9 +49,12 @@
                   placeholder="Digite o e-mail"
                 />
               </div>
+              <div *ngIf="formulario.get('usuario')?.errors?.['required'] && formulario.get('usuario')?.touched">
+                <p class="validaForm">O campo e-mail é obrigatório.</p>
+              </div>
               <div class="form-group">
                 <label for="senha">Senha</label>
-                <input
+                <input formControlName="senha"
                 [(ngModel)]="usuarios.senha"
                 class="form-control"
                 type="password"
@@ -54,7 +63,9 @@
                 placeholder="Digite a senha"
               />
             </div>
-                
+            <div *ngIf="formulario.get('senha')?.errors?.['required'] && formulario.get('senha')?.touched">
+              <p class="validaForm">O campo senha é obrigatório.</p>
+            </div>        
   
   
              

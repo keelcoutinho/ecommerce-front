@@ -5,6 +5,7 @@ import { Produtos } from '../model/Produtos';
 import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from 'src/environments/environment.prod';
 import Swal from 'sweetalert2';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-produtos',
@@ -12,6 +13,8 @@ import Swal from 'sweetalert2';
   styleUrls: ['./produtos.component.css']
 })
 export class ProdutosComponent implements OnInit {
+  formulario: FormGroup;
+  
   produtos: Produtos = new Produtos();
   listaProdutos: Produtos[];
   categoria: string;
@@ -21,11 +24,20 @@ export class ProdutosComponent implements OnInit {
 
   constructor(
     private produtosService: ProdutosService,
-    private router: Router
+    private router: Router,
+    private formBuilder: FormBuilder
   ) { }
 
 
   ngOnInit() {
+    this.formulario = this.formBuilder.group({
+      nome: ['',[Validators.required]],
+      descricao: ['',[Validators.required]],
+      valor:['',[Validators.required]],      
+      estoque: ['',[Validators.required]],
+      categoria: ['',[Validators.required]],
+      imagem: ['',[Validators.required]]
+    });
     if (environment.token == '') {
 
       Swal.fire({

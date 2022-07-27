@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { User } from '../model/User';
 import { AuthService } from '../service/auth.service';
 import Swal from 'sweetalert2';
+import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 
 @Component({
@@ -13,6 +14,8 @@ import Swal from 'sweetalert2';
 
 export class CadastrarComponent implements OnInit {
 
+  formulario: FormGroup;
+
   user: User = new User
   confirmarSenha: string
 
@@ -20,12 +23,19 @@ export class CadastrarComponent implements OnInit {
 
   constructor(
     private auth: AuthService,
-    private router: Router
+    private router: Router,
+    private formBuilder: FormBuilder
   ) { }
 
   ngOnInit() {
-
-    window.scroll(0,0)
+    window.scroll(0,0),
+    this.formulario = this.formBuilder.group({
+      nome: ['',[Validators.required]],
+      usuario: ['',[Validators.required]],
+      cpfUsuario:['',[Validators.required]],      
+      senha: ['',[Validators.required]],
+      confirmeSenha: ['',[Validators.required]]
+    });
   }
 
   confirmSenha(event: any){

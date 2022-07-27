@@ -16,7 +16,7 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './login/login.component';
 import { CadastrarComponent } from './cadastrar/cadastrar.component';
 import { PedidosComponent } from './pedidos/pedidos.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { SobreComponent } from './components/sobre/sobre.component';
 import { JogosAppComponent } from './jogos-app/jogos-app.component';
@@ -68,6 +68,7 @@ import { UsuariosComponent } from './usuarios/usuarios.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     ModalModule.forRoot(),
     OrderModule,
 

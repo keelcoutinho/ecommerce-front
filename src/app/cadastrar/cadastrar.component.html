@@ -6,37 +6,52 @@
             </div>
             <div class="col-md-8 mt-5 mb-5">
                 <div class="row d-flex justify-content-center align-items-center">
-                    <div class="col-md-10">
+                    <div class="col-md-10" [formGroup]="formulario">
                         <h2 class="text-center m-0"> Cadastro de Usuário</h2>
                         <div class="form-group">
                             <label for="nome"> Nome</label>
                             <br>
-                            <input [(ngModel)]="user.nome" class="form-control" type="text" name="nome" id="nome" placeholder="Seu nome">
+                            <input formControlName="nome" [(ngModel)]="user.nome" class="form-control" type="text" name="nome" id="nome" placeholder="Seu nome">
+                        </div>
+                        <div *ngIf="formulario.get('nome')?.errors?.['required'] && formulario.get('nome')?.touched">
+                            <p class="validaForm">O campo nome é obrigatório.</p>
                         </div>
                         <div class="form-group">
                             <label for="usuario">Usuário</label>
                             <br>
-                            <input [(ngModel)] = "user.usuario" class="form-control" type="text" name="usuario" id="usuario" placeholder="Seu e-mail">
+                            <input formControlName="usuario" [(ngModel)] = "user.usuario" class="form-control" type="text" name="usuario" id="usuario" placeholder="Seu e-mail">
+                        </div>
+                        <div *ngIf="formulario.get('usuario')?.errors?.['required'] && formulario.get('usuario')?.touched">
+                            <p class="validaForm">O campo e-mail é obrigatório.</p>
                         </div>
                         <div class="form-group">
                             <label for="foto">CPF</label>
                             <br>
-                            <input [(ngModel)]="user.cpfUsuario" class="form-control" type="text" name="cpf" id="usuario" placeholder="Seu CPF">
+                            <input formControlName="cpfUsuario" [(ngModel)]="user.cpfUsuario" class="form-control" type="text" name="cpf" id="usuario" placeholder="Seu CPF">
+                        </div>
+                        <div *ngIf="formulario.get('cpfUsuario')?.errors?.['required'] && formulario.get('cpfUsuario')?.touched">
+                            <p class="validaForm">O campo cpf é obrigatório.</p>
                         </div>
                         <div class="form-group">
                             <label for="senha">Senha</label>
                             <br>
-                            <input (input)="confirmSenha($event)" class="form-control" type="password" name="senha" id="senha" placeholder="Sua senha">
+                            <input formControlName="senha" (input)="confirmSenha($event)" class="form-control" type="password" name="senha" id="senha" placeholder="Sua senha">
+                        </div>
+                        <div *ngIf="formulario.get('senha')?.errors?.['required'] && formulario.get('senha')?.touched">
+                            <p class="validaForm">O campo senha é obrigatório.</p>
                         </div>
                         <div class="form-group">
                             <label for="confirmeSenha">Confirmar senha</label>
                             <br>
-                            <input [(ngModel)]="user.senha" class="form-control" type="password" name="senha" id="senhaConf" placeholder="Sua senha">
+                            <input formControlName="confirmeSenha" [(ngModel)]="user.senha" class="form-control" type="password" name="senha" id="senhaConf" placeholder="Sua senha">
+                        </div>
+                        <div *ngIf="formulario.get('confirmeSenha')?.errors?.['required'] && formulario.get('confirmeSenha')?.touched">
+                            <p class="validaForm">O campo confirmar senha é obrigatório.</p>
                         </div>
                         <br>
                         <div class="d-flex justify-content-center align-items-center">
                             <button type="submit" class="btn btn-danger mr-4" style="margin: 15px; background: #e63909;" routerLink="/home">Cancelar</button>
-                            <button type="submit" class="btn btn-succes text-white"style="margin: 15px; background: #010127" id="botaoCadastrar" (click)="cadastrar()">Cadastrar</button>
+                            <button type="submit" class="btn btn-succes text-white"style="margin: 15px; background: #010127" id="botaoCadastrar" [disabled]="!formulario.valid" (click)="cadastrar()">Cadastrar</button>
                         </div>
                         <div>
                             <hr class="mt-5 mb-5">

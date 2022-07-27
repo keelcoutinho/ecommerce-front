@@ -7,12 +7,12 @@
         <form class="form-signin rounded-sm vw-100">
           <div class="col-md-12 mt-3 mb-5">
           <div class="row d-flex justify-content-center">
-              <div class="col-md-10">
+              <div class="col-md-10" [formGroup]="formulario">
               <h2 class="text-center  h2-mobile">Cadastrar Produto</h2>
   
               <div class="form-group">
                   <label for="produto">Produto</label>
-                  <input
+                  <input formControlName="nome"
                   [(ngModel)]="produtos.nomeProduto"
                   class="form-control"
                   type="text"
@@ -21,10 +21,13 @@
                   placeholder="Nome do produto"
                   />
               </div>
+              <div *ngIf="formulario.get('nome')?.errors?.['required'] && formulario.get('nome')?.touched">
+                <p class="validaForm">O nome do produto é obrigatório.</p>
+              </div>
   
               <div class="form-group">
                   <label for="descricao">Descrição</label>
-                  <textarea
+                  <textarea formControlName="descricao"
                   [(ngModel)]="produtos.descricaoProduto"
                   class="form-control"
                   name="descricao"
@@ -34,10 +37,13 @@
                   rows="10"
                   ></textarea>
               </div>
+              <div *ngIf="formulario.get('descricao')?.errors?.['required'] && formulario.get('descricao')?.touched">
+                <p class="validaForm">A descrição é obrigatória.</p>
+              </div>
   
               <div class="form-group">
                   <label for="valor">Valor</label>
-                  <input
+                  <input formControlName="valor"
                   [(ngModel)]="produtos.valorProduto"
                   class="form-control"
                   type="text"
@@ -46,9 +52,12 @@
                   placeholder="Digite o valor do seu produto"
                   />
               </div>
+              <div *ngIf="formulario.get('valor')?.errors?.['required'] && formulario.get('valor')?.touched">
+                <p class="validaForm">O valor é obrigatório.</p>
+            </div>
               <div class="form-group">
-                  <label for="valor">Estoque</label>
-                  <input
+                  <label for="estoque">Estoque</label>
+                  <input formControlName="estoque"
                   [(ngModel)]="produtos.estoque"
                   class="form-control"
                   type="text"
@@ -60,7 +69,7 @@
   
               <div class="form-group">
                   <label for="categoria">Categoria</label>
-                  <select class="form-control" name="categoria" id="categoria" (change)="categoriaProd($event)">
+                  <select formControlName="categoria" class="form-control" name="categoria" id="categoria" (change)="categoriaProd($event)">
                     <option value="ALL">Todos</option>
                     <option value="ACAO">Ação</option>
                     <option value="AVENTURA">Aventura</option>
@@ -70,12 +79,14 @@
                     <option value="TERROR">Terror</option>
                   </select>
               </div>  
-              
+              <div *ngIf="formulario.get('categoria')?.errors?.['required'] && formulario.get('categoria')?.touched">
+                <p class="validaForm">A categoria é obrigatória.</p>
+              </div>
   
   
               <div class="form-group">
                   <label for="imagem">Imagem do Produto</label>
-                  <input
+                  <input formControlName="imagem"
                   [(ngModel)]="produtos.imagem"
                   class="form-control"
                   type="text"
@@ -83,6 +94,9 @@
                   id="imagem"
                   placeholder="{{produtos.imagem}}"
                   />
+              </div>
+              <div *ngIf="formulario.get('imagem')?.errors?.['required'] && formulario.get('imagem')?.touched">
+                <p class="validaForm">A imagem é obrigatória.</p>
               </div>
   
               <div class="d-flex justify-content-center py-3">                  
