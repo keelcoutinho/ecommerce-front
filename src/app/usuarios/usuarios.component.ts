@@ -18,6 +18,7 @@ export class UsuariosComponent implements OnInit {
   
   erro: any;
   index: number;
+ 
 
   constructor(
     private authService: AuthService,
@@ -82,14 +83,4 @@ export class UsuariosComponent implements OnInit {
     this.index = id;
   }
 
-
-  atualizar(){
-    this.authService.atualizar(this.usuarios).subscribe((resp: User)=>{
-      this.usuarios = resp
-      Swal.fire({
-        title: 'Usuário atualizado com sucesso!',
-        icon: 'success'
-    })
-    })
-  }
 }

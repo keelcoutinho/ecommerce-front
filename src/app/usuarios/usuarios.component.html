@@ -115,7 +115,6 @@
             <td>{{usuarios.usuario}}</td>
             <td>{{usuarios.cpfUsuario}}</td>
             <td class="d-flex  justify-content-end">
-              <a [routerLink]="['/usuarios', usuarios.idUsuario]" routerLinkActive="active"><i class="fa  fa-pencil-square  text-dark" aria-hidden="true"><img style="margin-right: 4px;"  class="imgIcon" src="../../assets/Images/editar.png" alt=""></i></a>
               <a (click)="pegarId(usuarios.idUsuario)" class="mx-2" href="" data-bs-toggle="modal" data-bs-target="#deletarUsuario">
                 <img class="imgIcon" src="../../assets/Images/deletar.png" alt="ícone Deletar">
               </a>
@@ -127,6 +126,8 @@
     </div>
   </div>
 </div>
+
+
 
 <!-- MODAL -->
 <div class="modal fade" id="deletarUsuario" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -146,5 +147,7 @@
       </div>
     </div>
 </div>
+
+
 
 <app-footer></app-footer>
