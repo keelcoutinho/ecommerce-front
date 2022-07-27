@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment.prod';
 import Swal from 'sweetalert2';
@@ -12,16 +13,21 @@ import { AuthService } from '../service/auth.service';
 })
 export class LoginComponent implements OnInit {
 
+  formulario: FormGroup;
   userLogin: UserLogin = new UserLogin
 
   constructor(
     private auth: AuthService,
-    private router: Router
+    private router: Router,
+    private formBuilder: FormBuilder
 
   ) { }
 
   ngOnInit() {
-    
+    this.formulario = this.formBuilder.group({      
+      usuario: ['',[Validators.required]],    
+      senha: ['',[Validators.required]]
+    });
   }
 
   login(){
