@@ -19,10 +19,16 @@ export class PedidosComponent implements OnInit {
   produto: Produtos = new Produtos()
   listaProdutos: Array<Produtos> = []
   soma = 0
+  token = environment.token
+
+  nome = environment.nome
+  cpf = environment.cpfUsuario
+  email = environment.usuario
 
   constructor(
     private produtoService: ProdutosService,
-    private router: Router
+    private router: Router,
+    public auth: AuthService
     ) { }
 
   ngOnInit() {
@@ -45,6 +51,18 @@ export class PedidosComponent implements OnInit {
       }
     }
   }
+
+  pagamento(){
+    if(environment.token == '') {
+      Swal.fire({
+        title: 'Você precisa estar logado!',
+        icon: 'warning'
+      }
+      )
+      this.router.navigate(['/login'])
+    }
+  }
+
   finalizarCompra() {
     if(environment.token == '') {
       Swal.fire({
@@ -80,4 +98,12 @@ export class PedidosComponent implements OnInit {
     environment.carrinho = [0]
     this.soma= 0
   }
+
+
+  // DATA ATUAL
+  data = new Date()
+  dia = String(this.data.getDate()).padStart(2,'0')
+  mes = String(this.data.getMonth()).padStart(2,'0')
+  ano = this.data.getFullYear()
+  dataAtual = `${this.dia}/${this.mes}/${this.ano}`
 }
