@@ -67,11 +67,7 @@ export class UsuarioEditComponent implements OnInit {
           title: 'Usuário atualizado com sucesso! Faça o login novamente.',
           icon: 'success'
         })
-        environment.token = ''
-        environment.usuario = ''
-        environment.nome = ''
-        environment.idUsuario = 0
-        this.router.navigate(["/login"])
+        this.router.navigate(["/home"])
       })
     }
   }
