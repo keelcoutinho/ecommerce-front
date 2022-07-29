@@ -32,7 +32,7 @@ const routes: Routes = [
   {path: 'produtos-edit/:id', component: ProdutosEditComponent},
   {path: 'template', component: TemplateComponent},
   {path: 'adm', component: AdmComponent},
-  {path: 'usuarios', component: UsuariosComponent}
+  {path: 'usuarios', component: UsuariosComponent},
 ];
 
 @NgModule({
